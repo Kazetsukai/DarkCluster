@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: astra_cargo_01
-  m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 20, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -20,9 +20,20 @@ Material:
           m_Texture: {fileID: 2800000, guid: bb5c5364f9bc8ef4faa2228215c6e820, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 8900000, guid: b86a34e819debcf4da3f679c45b53775, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats: {}
     m_Colors:
       data:
         first:
           name: _Color
         second: {r: .588235319, g: .588235319, b: .588235319, a: 1}
+      data:
+        first:
+          name: _ReflectColor
+        second: {r: .463235319, g: .463235319, b: .463235319, a: .501960814}

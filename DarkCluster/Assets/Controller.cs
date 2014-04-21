@@ -6,25 +6,42 @@ public class Controller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        _ship = GameObject.Find("AstraShuttlePrefab");
+        PhotonNetwork.ConnectUsingSettings("v0.1");
 	}
+
+    void OnJoinedLobby()
+    {
+        Debug.Log("Joined lobby!");
+        PhotonNetwork.JoinOrCreateRoom("TheRoom", null, PhotonNetwork.lobby);
+    }
+    
+    void OnJoinedRoom()
+    {
+        Debug.Log("Joined room!");
+
+        _ship = PhotonNetwork.Instantiate("StarShip", Vector3.zero, Quaternion.identity, 0);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        //Camera.main.transform.Rotate(new Vector3(0.1f, 0.6f, 0.2f), -0.05f);
 
-        var cam = Camera.main;
-        cam.transform.position = _ship.transform.position + (_ship.transform.localRotation * (Vector3.back * 2));
-        cam.transform.LookAt(_ship.transform.position, _ship.transform.localRotation * Vector3.up);
+        if (_ship != null)
+        {
+            //Camera.main.transform.Rotate(new Vector3(0.1f, 0.6f, 0.2f), -0.05f);
 
-        var roll = -Input.GetAxis("Horizontal");
-        var pitch = Input.GetAxis("Vertical");
+            var cam = Camera.main;
+            cam.transform.position = _ship.transform.position + (_ship.transform.localRotation * (Vector3.back * 2));
+            cam.transform.LookAt(_ship.transform.position, _ship.transform.localRotation * Vector3.up);
 
-        _ship.rigidbody.AddRelativeTorque(pitch, 0, roll);
+            var roll = -Input.GetAxis("Horizontal");
+            var pitch = Input.GetAxis("Vertical");
 
-        if (Input.GetButton("Fire1"))
-            _ship.rigidbody.AddRelativeForce(Vector3.forward * 50);
+            _ship.rigidbody.AddRelativeTorque(pitch, 0, roll);
 
-        Debug.DrawRay(_ship.transform.position, _ship.rigidbody.velocity, Color.white);
+            if (Input.GetButton("Fire1"))
+                _ship.rigidbody.AddRelativeForce(Vector3.forward * 50);
+
+            Debug.DrawRay(_ship.transform.position, _ship.rigidbody.velocity, Color.white);
+        }
 	}
 }
