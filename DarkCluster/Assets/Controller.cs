@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Spin : MonoBehaviour {
+public class Controller : MonoBehaviour {
     private GameObject _ship;
 
 	// Use this for initialization
@@ -24,5 +24,7 @@ public class Spin : MonoBehaviour {
 
         if (Input.GetButton("Fire1"))
             _ship.rigidbody.AddRelativeForce(Vector3.forward * 50);
+
+        Debug.DrawRay(_ship.transform.position, _ship.rigidbody.velocity, Color.white);
 	}
 }
