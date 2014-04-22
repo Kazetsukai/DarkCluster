@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Controller : MonoBehaviour {
     private GameObject _ship;
-    private UniverseScript _universe;
+    private GameObject _universe;
 
 	// Use this for initialization
 	void Start () {
         PhotonNetwork.ConnectUsingSettings("v0.1");
 
-        PhotonNetwork.offlineMode = true;
+        //PhotonNetwork.offlineMode = true;
 	}
 
     void OnJoinedLobby()
@@ -26,7 +26,7 @@ public class Controller : MonoBehaviour {
         
         if (PhotonNetwork.isMasterClient)
         {
-            PhotonNetwork.Instantiate("Network", Vector3.zero, Quaternion.identity, 0);
+            _universe = PhotonNetwork.Instantiate("Network", Vector3.zero, Quaternion.identity, 0);
         }
     }
 	
@@ -44,12 +44,15 @@ public class Controller : MonoBehaviour {
             var roll = -Input.GetAxis("Horizontal");
             var pitch = Input.GetAxis("Vertical");
 
-            _ship.rigidbody.AddRelativeTorque(pitch, 0, roll);
+            var relativeAngularVelocity = _ship.transform.InverseTransformDirection(_ship.rigidbody.angularVelocity);
+            _ship.rigidbody.AddRelativeTorque(pitch, -relativeAngularVelocity.y, roll, ForceMode.Force);
 
             if (Input.GetButton("Fire1"))
-                _ship.rigidbody.AddRelativeForce(Vector3.forward * 50);
+                _ship.rigidbody.AddRelativeForce(Vector3.forward * 50, ForceMode.Force);
 
             Debug.DrawRay(_ship.transform.position, _ship.rigidbody.velocity, Color.white);
         }
+
+        Debug.Log("Time: " + PhotonNetwork.time);
 	}
 }
