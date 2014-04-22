@@ -87,7 +87,6 @@ GameObject:
   - 124: {fileID: 67178059}
   - 81: {fileID: 67178058}
   - 45: {fileID: 67178063}
-  - 114: {fileID: 67178064}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -164,52 +163,41 @@ Skybox:
   m_GameObject: {fileID: 67178057}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: 6dcc6e41096ec0b45b8154257d44fef3, type: 2}
---- !u!114 &67178064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 67178057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 257d7672d9694374a9415e0127eab689, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1727636271
+--- !u!1 &762115523
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 1727636273}
-  - 114: {fileID: 1727636272}
+  - 4: {fileID: 762115525}
+  - 114: {fileID: 762115524}
   m_Layer: 0
-  m_Name: gui
+  m_Name: InitObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1727636272
+--- !u!114 &762115524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1727636271}
+  m_GameObject: {fileID: 762115523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a64260c8bd93d34bad438781719d20e, type: 3}
+  m_Script: {fileID: 11500000, guid: 257d7672d9694374a9415e0127eab689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1727636273
+--- !u!4 &762115525
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1727636271}
+  m_GameObject: {fileID: 762115523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -57.7021027, y: 10.0161819, z: -6.00093842}
+  m_LocalPosition: {x: -2.0931325, y: 5.48277378, z: 2.54056978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
