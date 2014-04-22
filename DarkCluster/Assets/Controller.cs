@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Controller : MonoBehaviour {
     private GameObject _ship;
@@ -11,6 +12,12 @@ public class Controller : MonoBehaviour {
 
         //PhotonNetwork.offlineMode = true;
 	}
+
+    void OnGUI()
+    {
+        if (_ship != null)
+            GUI.Label(new Rect(300, 100, 300, 30), "Velocity: " + Math.Round(_ship.rigidbody.velocity.magnitude, 4));
+    }
 
     void OnJoinedLobby()
     {

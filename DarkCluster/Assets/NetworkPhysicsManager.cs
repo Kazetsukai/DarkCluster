@@ -17,7 +17,7 @@ public class NetworkPhysicsManager : MonoBehaviour {
     {
         if (_enemy == null)
             _enemy = (GameObject)Instantiate(Resources.Load<GameObject>("EnemyShip"), Vector3.forward * 5, Quaternion.identity);
-        else
+        else if (PhotonNetwork.isMasterClient)
         {
             var player = GameObject.FindGameObjectWithTag("Player");
 
