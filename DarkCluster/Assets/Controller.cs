@@ -3,10 +3,13 @@ using System.Collections;
 
 public class Controller : MonoBehaviour {
     private GameObject _ship;
+    private UniverseScript _universe;
 
 	// Use this for initialization
 	void Start () {
         PhotonNetwork.ConnectUsingSettings("v0.1");
+
+        PhotonNetwork.offlineMode = true;
 	}
 
     void OnJoinedLobby()
@@ -20,6 +23,11 @@ public class Controller : MonoBehaviour {
         Debug.Log("Joined room!");
 
         _ship = PhotonNetwork.Instantiate("StarShip", Vector3.zero, Quaternion.identity, 0);
+        
+        if (PhotonNetwork.isMasterClient)
+        {
+            PhotonNetwork.Instantiate("Network", Vector3.zero, Quaternion.identity, 0);
+        }
     }
 	
 	// Update is called once per frame
