@@ -51,15 +51,32 @@ public class Controller : MonoBehaviour {
             var roll = -Input.GetAxis("Horizontal");
             var pitch = Input.GetAxis("Vertical");
 
+            roll /= 10.0f;
+            pitch /= 10.0f;
+
             var relativeAngularVelocity = _ship.transform.InverseTransformDirection(_ship.rigidbody.angularVelocity);
-            _ship.rigidbody.AddRelativeTorque(pitch, -relativeAngularVelocity.y, roll, ForceMode.Force);
+            _ship.rigidbody.AddRelativeTorque(pitch, -relativeAngularVelocity.y, roll);
 
             if (Input.GetButton("Fire1"))
-                _ship.rigidbody.AddRelativeForce(Vector3.forward * 50, ForceMode.Force);
+                _ship.rigidbody.AddRelativeForce(Vector3.forward * 50);
 
             Debug.DrawRay(_ship.transform.position, _ship.rigidbody.velocity, Color.white);
-        }
 
-        Debug.Log("Time: " + PhotonNetwork.time);
+            if (Input.GetButtonDown("Fire2"))
+            {
+                var enemy = GameObject.Find("EnemyShip(Clone)");
+                if (enemy != null)
+                    FireMahLaser(_ship, enemy);
+            }
+        }
 	}
+
+    private void FireMahLaser(GameObject from, GameObject to)
+    {
+        var laser = (GameObject)Instantiate(Resources.Load<GameObject>("LaserBeam"));
+
+        var laserScript = laser.GetComponent<LaserScript>();
+        laserScript.Origin = from;
+        laserScript.Target = to;
+    }
 }

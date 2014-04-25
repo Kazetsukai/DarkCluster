@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Controller.cs" />
      <Compile Include="Assets\GuiController.cs" />
+     <Compile Include="Assets\LaserScript.cs" />
      <Compile Include="Assets\NetworkPhysicsManager.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
      <Compile Include="Assets\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />

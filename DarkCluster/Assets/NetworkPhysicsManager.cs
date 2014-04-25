@@ -30,12 +30,13 @@ public class NetworkPhysicsManager : MonoBehaviour {
             
             // Get difference between current heading/speed and ideal heading/speed
             var delta = dir - _enemy.rigidbody.velocity;
+            delta.Normalize();
 
             // Move that way
             _enemy.rigidbody.AddForce(delta);
 
             // And point that way
-            _enemy.transform.rotation = Quaternion.LookRotation(delta);
+            _enemy.transform.LookAt(player.transform);
         }
 	}
 
