@@ -2,15 +2,11 @@
 using System.Collections;
 using System;
 
-public class Controller : MonoBehaviour {
+public class PlayerShipController : MonoBehaviour {
     private GameObject _ship;
-    private GameObject _universe;
 
-	// Use this for initialization
 	void Start () {
-        PhotonNetwork.ConnectUsingSettings("v0.1");
 
-        //PhotonNetwork.offlineMode = true;
 	}
 
     void OnGUI()
@@ -19,23 +15,6 @@ public class Controller : MonoBehaviour {
             GUI.Label(new Rect(300, 100, 300, 30), "Velocity: " + Math.Round(_ship.rigidbody.velocity.magnitude, 4));
     }
 
-    void OnJoinedLobby()
-    {
-        Debug.Log("Joined lobby!");
-        PhotonNetwork.JoinOrCreateRoom("TheRoom", null, PhotonNetwork.lobby);
-    }
-    
-    void OnJoinedRoom()
-    {
-        Debug.Log("Joined room!");
-
-        _ship = PhotonNetwork.Instantiate("StarShip", Vector3.zero, Quaternion.identity, 0);
-        
-        if (PhotonNetwork.isMasterClient)
-        {
-            _universe = PhotonNetwork.Instantiate("Network", Vector3.zero, Quaternion.identity, 0);
-        }
-    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -69,6 +48,14 @@ public class Controller : MonoBehaviour {
                     FireMahLaser(_ship, enemy);
             }
         }
+        else
+        {
+            var findShip = GameObject.Find("StarShip(Clone)");
+            if (findShip != null)
+            {
+                _ship = findShip;
+            }
+        }
 	}
 
     private void FireMahLaser(GameObject from, GameObject to)
@@ -78,6 +65,5 @@ public class Controller : MonoBehaviour {
         var laserScript = laser.GetComponent<LaserScript>();
         laserScript.Origin = from;
         laserScript.Target = to;
-
     }
 }
