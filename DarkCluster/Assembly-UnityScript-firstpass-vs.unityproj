@@ -48,13 +48,13 @@
   <ItemGroup>
      <Compile Include="Assets\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
-     <None Include="Assets\3rdParty\Plugins\release_history.txt" />
+     <None Include="Assets\Plugins\release_history.txt" />
      <None Include="Assets\3rdParty\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\3rdParty\Photon Unity Networking\readme.txt" />
-     <None Include="Assets\3rdParty\Plugins\Photon3Unity3D.xml" />
+     <None Include="Assets\Plugins\Photon3Unity3D.xml" />
      <None Include="Assets\3rdParty\Photon Unity Networking\changelog.txt" />
  <Reference Include="Photon3Unity3D">
- <HintPath>Assets\3rdParty\Plugins\WP8\Photon3Unity3D.dll</HintPath>
+ <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
