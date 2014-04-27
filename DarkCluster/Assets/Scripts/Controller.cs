@@ -78,5 +78,6 @@ public class Controller : MonoBehaviour {
         var laserScript = laser.GetComponent<LaserScript>();
         laserScript.Origin = from;
         laserScript.Target = to;
+
     }
 }
