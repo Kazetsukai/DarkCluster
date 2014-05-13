@@ -241,6 +241,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 730322421}
   - 114: {fileID: 730322420}
+  - 114: {fileID: 730322422}
   m_Layer: 0
   m_Name: GUIObject
   m_TagString: Untagged
@@ -270,6 +271,25 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &730322422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730322419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5867a53c8db0e6745818285bb6b6e1b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WindowRect:
+    serializedVersion: 2
+    x: 0
+    y: 100
+    width: 120
+    height: 100
+  WindowId: 101
+  Visible: 1
 --- !u!1 &762115523
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class ObjectLocationMasterController : MonoBehaviour {
 
     Dictionary<int, TrackedObject> _trackedObjects = new Dictionary<int,TrackedObject>();
     int _nextTrackingId = 0;
+    public bool ReestimatePosition;
 
 	// Use this for initialization
 	void Start() 
@@ -40,11 +41,11 @@ public class ObjectLocationMasterController : MonoBehaviour {
         }
         else
         {
-            UpdateTrackedObjectsFrom(stream);
+            UpdateTrackedObjectsFrom(stream, info);
         }
     }
 
-    private void UpdateTrackedObjectsFrom(PhotonStream stream)
+    private void UpdateTrackedObjectsFrom(PhotonStream stream, PhotonMessageInfo info)
     {
         var count = (int)stream.ReceiveNext();
 
@@ -59,12 +60,16 @@ public class ObjectLocationMasterController : MonoBehaviour {
 
             var obj = _trackedObjects[id];
 
+            bool update = info.timestamp > obj.LatestTimestamp;
+            if (update) obj.LatestTimestamp = info.timestamp;
+            else Debug.Log("Ignored frame!");
+
             if ((bool)stream.ReceiveNext())
             {
                 var position = (Vector3)stream.ReceiveNext();
                 var rotation = (Quaternion)stream.ReceiveNext();
 
-                if (obj.transform != null)
+                if (obj.transform != null && update)
                 {
                     obj.transform.position = position;
                     obj.transform.rotation = rotation;
@@ -76,10 +81,19 @@ public class ObjectLocationMasterController : MonoBehaviour {
                 var velocity = (Vector3)stream.ReceiveNext();
                 var angularVelocity = (Vector3)stream.ReceiveNext();
 
-                if (obj.rigidbody != null)
+                if (obj.rigidbody != null && update)
                 {
                     obj.rigidbody.velocity = velocity;
                     obj.rigidbody.angularVelocity = angularVelocity;
+
+                    // Estimate position based on lag
+                    if (ReestimatePosition)
+                    {
+                        double timeLag = PhotonNetwork.time - info.timestamp;
+                        Debug.Log(timeLag);
+                        obj.transform.position += obj.rigidbody.velocity * (float)timeLag;
+                        obj.transform.rotation *= Quaternion.AngleAxis((float)timeLag, obj.rigidbody.angularVelocity);
+                    }
                 }
             }
         }
