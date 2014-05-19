@@ -23,9 +23,6 @@ public class PlayerShipController : MonoBehaviour {
         {
             //Camera.main.transform.Rotate(new Vector3(0.1f, 0.6f, 0.2f), -0.05f);
 
-            var cam = Camera.main;
-            cam.transform.position = _ship.transform.position + (_ship.transform.localRotation * (Vector3.back * 2));
-            cam.transform.LookAt(_ship.transform.position, _ship.transform.localRotation * Vector3.up);
 
             var roll = -Input.GetAxis("Horizontal");
             var pitch = Input.GetAxis("Vertical");
