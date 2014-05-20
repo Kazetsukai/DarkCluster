@@ -89,7 +89,7 @@
      <Compile Include="Assets\Scripts\LaserScript.cs" />
      <Compile Include="Assets\Scripts\Network\JoinNetworkGame.cs" />
      <Compile Include="Assets\Scripts\Network\NetworkEventAggregator.cs" />
-     <Compile Include="Assets\Scripts\Network\ObjectLocationMasterController.cs" />
+     <Compile Include="Assets\Scripts\Network\ObjectLocationTracker.cs" />
      <Compile Include="Assets\Scripts\Network\TrackedObject.cs" />
      <Compile Include="Assets\Scripts\PlayerShipController.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonShipCamera.cs" />

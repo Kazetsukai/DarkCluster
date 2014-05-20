@@ -1,12 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 public class PlayerShipController : MonoBehaviour {
     private GameObject _ship;
 
 	void Start () {
+        IEnumerable<PlayerShipController> otherControllers = FindObjectsOfType<PlayerShipController>().Where(x => x != this);
+        foreach (var controller in otherControllers)
+        {
+            PhotonNetwork.Destroy(controller.gameObject);
+        }
 
+        
+        var findShip = GameObject.Find("StarShip(Clone)");
+        if (findShip != null)
+        {
+            FindObjectOfType<ObjectLocationTracker>().StopTrackingObject(findShip);
+        }
 	}
 
     void OnGUI()
@@ -17,33 +30,35 @@ public class PlayerShipController : MonoBehaviour {
 
 	
 	// Update is called once per frame
-	void Update () {
-
+    void Update()
+    {
         if (_ship != null)
         {
-            //Camera.main.transform.Rotate(new Vector3(0.1f, 0.6f, 0.2f), -0.05f);
-
-
-            var roll = -Input.GetAxis("Horizontal");
-            var pitch = Input.GetAxis("Vertical");
-
-            roll /= 10.0f;
-            pitch /= 10.0f;
-
-            var relativeAngularVelocity = _ship.transform.InverseTransformDirection(_ship.rigidbody.angularVelocity);
-            _ship.rigidbody.AddRelativeTorque(pitch, -relativeAngularVelocity.y, roll);
-
-            if (Input.GetButton("Fire1"))
-                _ship.rigidbody.AddRelativeForce(Vector3.forward * 50);
-
-            Debug.DrawRay(_ship.transform.position, _ship.rigidbody.velocity, Color.white);
-
-            if (Input.GetButtonDown("Fire2"))
+            // TODO: Find a nicer way to determine owner of an object
+            if (IsOwner)
             {
-                var enemy = GameObject.Find("EnemyShip(Clone)");
-                if (enemy != null)
-                    FireMahLaser(_ship, enemy);
+                var roll = -Input.GetAxis("Horizontal");
+                var pitch = Input.GetAxis("Vertical");
+
+                roll /= 10.0f;
+                pitch /= 10.0f;
+
+                var relativeAngularVelocity = _ship.transform.InverseTransformDirection(_ship.rigidbody.angularVelocity);
+                _ship.rigidbody.AddRelativeTorque(pitch, -relativeAngularVelocity.y, roll);
+
+                if (Input.GetButton("Fire1"))
+                    _ship.rigidbody.AddRelativeForce(Vector3.forward * 50);
+
+                Debug.DrawRay(_ship.transform.position, _ship.rigidbody.velocity, Color.white);
+
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    var enemy = GameObject.Find("EnemyShip(Clone)");
+                    if (enemy != null)
+                        FireMahLaser(_ship, enemy);
+                }
             }
+
         }
         else
         {
@@ -53,7 +68,7 @@ public class PlayerShipController : MonoBehaviour {
                 _ship = findShip;
             }
         }
-	}
+    }
 
     private void FireMahLaser(GameObject from, GameObject to)
     {
@@ -63,4 +78,59 @@ public class PlayerShipController : MonoBehaviour {
         laserScript.Origin = from;
         laserScript.Target = to;
     }
+
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            IsOwner = true;
+            Debug.Log("I am ship owner!");
+            WriteTrackedObjectsTo(stream);
+        }
+        else
+        {
+            IsOwner = false;
+            UpdateTrackedObjectsFrom(stream, info);
+        }
+    }
+
+    private void UpdateTrackedObjectsFrom(PhotonStream stream, PhotonMessageInfo info)
+    {
+        var obj = GameObject.Find("StarShip(Clone)");
+
+        var position = (Vector3)stream.ReceiveNext();
+        var rotation = (Quaternion)stream.ReceiveNext();
+
+        obj.transform.position = position;
+        obj.transform.rotation = rotation;
+
+        var velocity = (Vector3)stream.ReceiveNext();
+        var angularVelocity = (Vector3)stream.ReceiveNext();
+
+        obj.rigidbody.velocity = velocity;
+        obj.rigidbody.angularVelocity = angularVelocity;
+
+        // Estimate position based on lag
+        double timeLag = PhotonNetwork.time - info.timestamp;
+        Debug.Log(timeLag);
+        obj.transform.position += obj.rigidbody.velocity * (float)timeLag;
+        obj.transform.rotation *= Quaternion.AngleAxis((float)timeLag, obj.rigidbody.angularVelocity);
+    }
+
+    private void WriteTrackedObjectsTo(PhotonStream stream)
+    {
+        var obj = GameObject.Find("StarShip(Clone)");
+
+        var objTransform = obj.transform;
+        var objRigidbody = obj.rigidbody;
+
+        stream.SendNext(objTransform.position);
+        stream.SendNext(objTransform.rotation);
+
+        stream.SendNext(objRigidbody.velocity);
+        stream.SendNext(objRigidbody.angularVelocity);
+
+    }
+
+    public bool IsOwner { get; set; }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public class ObjectLocationMasterController : MonoBehaviour {
+public class ObjectLocationTracker : MonoBehaviour {
 
     Dictionary<int, TrackedObject> _trackedObjects = new Dictionary<int,TrackedObject>();
     int _nextTrackingId = 0;
@@ -31,6 +31,15 @@ public class ObjectLocationMasterController : MonoBehaviour {
         _nextTrackingId++;
 
         return trackedObj.ID;
+    }
+
+    public void StopTrackingObject(GameObject obj)
+    {
+        var trackedObj = obj.GetComponent<TrackedObject>();
+        if (trackedObj != null)
+        {
+            _trackedObjects.Remove(trackedObj.ID);
+        }
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

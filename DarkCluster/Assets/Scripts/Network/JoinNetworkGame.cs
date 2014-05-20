@@ -10,7 +10,10 @@ public class JoinNetworkGame : MonoBehaviour {
 	}
 	
 	void Update () {
-	
+	    if (Input.GetKeyDown(KeyCode.BackQuote))
+        {
+            PhotonNetwork.Instantiate("PlayerShipController", Vector3.zero, Quaternion.identity, 0);
+        }
 	}
 
     void OnJoinedLobby()
