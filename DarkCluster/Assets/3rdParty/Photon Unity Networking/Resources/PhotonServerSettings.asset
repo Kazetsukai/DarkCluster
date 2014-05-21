@@ -21,4 +21,5 @@ MonoBehaviour:
   - InstantiateRpc
   - OnAwakeRPC
   - DestroyRpc
+  - PublishRemote
   DisableAutoOpenWizard: 0
