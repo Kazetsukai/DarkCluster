@@ -53,11 +53,11 @@
      <None Include="Assets\3rdParty\Photon Unity Networking\readme.txt" />
      <None Include="Assets\Plugins\Photon3Unity3D.xml" />
      <None Include="Assets\3rdParty\Photon Unity Networking\changelog.txt" />
- <Reference Include="Photon3Unity3D">
- <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
- </Reference>
  <Reference Include="Mono.CSharp">
  <HintPath>Assets\Mono.CSharp.dll</HintPath>
+ </Reference>
+ <Reference Include="Photon3Unity3D">
+ <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

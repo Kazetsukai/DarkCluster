@@ -3,20 +3,21 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
+// TODO: This class desperately needs to be able to assert that
+//       it will never get tracking IDs out of sync across
+//       different clients...
 public class ObjectLocationTracker : MonoBehaviour {
 
     Dictionary<int, TrackedObject> _trackedObjects = new Dictionary<int,TrackedObject>();
     int _nextTrackingId = 0;
     public bool ReestimatePosition;
 
-	// Use this for initialization
 	void Start() 
     {
         TrackObject((GameObject)Instantiate(Resources.Load<GameObject>("StarShip")));
         Debug.Log("Created ship");
 	}
 	
-	// Update is called once per frame
 	void Update()
     {
 	}

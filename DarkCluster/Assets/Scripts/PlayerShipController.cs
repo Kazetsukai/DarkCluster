@@ -4,22 +4,11 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-public class PlayerShipController : MonoBehaviour {
+public class PlayerShipController : Photon.MonoBehaviour {
     private GameObject _ship;
 
 	void Start () {
-        IEnumerable<PlayerShipController> otherControllers = FindObjectsOfType<PlayerShipController>().Where(x => x != this);
-        foreach (var controller in otherControllers)
-        {
-            PhotonNetwork.Destroy(controller.gameObject);
-        }
-
         
-        var findShip = GameObject.Find("StarShip(Clone)");
-        if (findShip != null)
-        {
-            FindObjectOfType<ObjectLocationTracker>().StopTrackingObject(findShip);
-        }
 	}
 
     void OnGUI()
@@ -84,7 +73,6 @@ public class PlayerShipController : MonoBehaviour {
         if (stream.isWriting)
         {
             IsOwner = true;
-            Debug.Log("I am ship owner!");
             WriteTrackedObjectsTo(stream);
         }
         else

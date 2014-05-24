@@ -63,6 +63,9 @@
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
+ <Reference Include="Mono.CSharp">
+ <HintPath>Assets\Mono.CSharp.dll</HintPath>
+ </Reference>
  <Reference Include="Newtonsoft.Json">
  <HintPath>Assets\3rdParty\Photon Unity Networking\Editor\PhotonNetwork\Newtonsoft.Json.dll</HintPath>
  </Reference>
@@ -86,9 +89,6 @@
  </Reference>
  <Reference Include="UnityEditor.Android.Extensions">
  <HintPath>C:\Program Files (x86)\Unity\Editor\Data\PlaybackEngines\AndroidPlayer\EditorExtensions\UnityEditor.Android.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="Mono.CSharp">
- <HintPath>Assets\Mono.CSharp.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

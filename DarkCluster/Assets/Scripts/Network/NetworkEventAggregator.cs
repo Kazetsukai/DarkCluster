@@ -4,8 +4,9 @@ using Caliburn.Micro;
 using System;
 using System.Xml.Serialization;
 using System.IO;
+using Assets.Scripts.Services;
 
-public class NetworkEventAggregator : Photon.MonoBehaviour, IHandle<string>, IHandle<int>
+public class NetworkEventAggregator : Photon.MonoBehaviour
 {
 
     IEventAggregator _eventAggregator;
@@ -14,7 +15,11 @@ public class NetworkEventAggregator : Photon.MonoBehaviour, IHandle<string>, IHa
 	void Start () {
         _eventAggregator = new EventAggregator();
 
-        _eventAggregator.Subscribe(this);
+        foreach (var service in ServiceBootstrapper.GetServices())
+        {
+            Debug.Log("Registering " + service);
+            _eventAggregator.Subscribe(service);
+        }
 	}
 	
 	// Update is called once per frame
@@ -54,14 +59,5 @@ public class NetworkEventAggregator : Photon.MonoBehaviour, IHandle<string>, IHa
         var obj = Deserialize(message, type);
 
         _eventAggregator.Publish(obj);
-    }
-
-    public void Handle(string message)
-    {
-        Debug.Log("Handled a string!");
-    }
-    public void Handle(int message)
-    {
-        Debug.Log("Handled an int!");
     }
 }

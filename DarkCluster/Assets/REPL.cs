@@ -30,6 +30,13 @@ public class REPL : MonoBehaviour {
                 Debug.LogWarning("Couldn't load assembly: " + a.FullName + " (" + ex.ToString() + ")");
             }
         }
+
+        Evaluator.Run("using UnityEngine;");
+        Evaluator.Run("using Mono.CSharp;");
+        Evaluator.Run("using System;");
+        Evaluator.Run("using System.Text;");
+        Evaluator.Run("using System.Collections;");
+        Evaluator.Run("using System.Linq;");
 	}
 	
 	// Update is called once per frame

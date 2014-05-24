@@ -90,12 +90,16 @@
      <Compile Include="Assets\REPL.cs" />
      <Compile Include="Assets\Scripts\Events\ShipControllingPlayerChangedEvent.cs" />
      <Compile Include="Assets\Scripts\GuiController.cs" />
+     <Compile Include="Assets\Scripts\IService.cs" />
      <Compile Include="Assets\Scripts\LaserScript.cs" />
      <Compile Include="Assets\Scripts\Network\JoinNetworkGame.cs" />
      <Compile Include="Assets\Scripts\Network\NetworkEventAggregator.cs" />
      <Compile Include="Assets\Scripts\Network\ObjectLocationTracker.cs" />
      <Compile Include="Assets\Scripts\Network\TrackedObject.cs" />
      <Compile Include="Assets\Scripts\PlayerShipController.cs" />
+     <Compile Include="Assets\Scripts\Services\ServiceBootstrapper.cs" />
+     <Compile Include="Assets\Scripts\Services\ShipControlService.cs" />
+     <Compile Include="Assets\Scripts\TakeControlOfShip.cs" />
      <Compile Include="Assets\Scripts\ThirdPersonShipCamera.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Plugins\release_history.txt" />
@@ -106,11 +110,11 @@
  <Reference Include="Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
- <Reference Include="Photon3Unity3D">
- <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
- </Reference>
  <Reference Include="Mono.CSharp">
  <HintPath>Assets\Mono.CSharp.dll</HintPath>
+ </Reference>
+ <Reference Include="Photon3Unity3D">
+ <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
