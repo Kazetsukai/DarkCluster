@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace Assets.Scripts.Services
+namespace DarkCluster.Core.Services
 {
     public class ShipControlService : IService, IHandle<ShipControllingPlayerChangedEvent>
     {

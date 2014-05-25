@@ -241,6 +241,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 523957148}
   - 114: {fileID: 523957149}
+  - 114: {fileID: 523957150}
   m_Layer: 0
   m_Name: Controls
   m_TagString: Untagged
@@ -268,6 +269,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac43c8a70eed0c64c93dff6ebd745264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &523957150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 523957147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1238673526feffc4b939fef318883ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &587483490
@@ -368,7 +380,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 730322419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da405ddf4a756c04e9f6ab4da8c0aa62, type: 3}
+  m_Script: {fileID: 11500000, guid: 743655d88fadedd42a88dd9a5e440175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &762115523

@@ -43,6 +43,11 @@ public class ObjectLocationTracker : MonoBehaviour {
         }
     }
 
+    public GameObject Get(int id)
+    {
+        return _trackedObjects[id].gameObject;
+    }
+
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)

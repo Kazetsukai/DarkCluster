@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DarkCluster.Core;
 
 public class ThirdPersonShipCamera : MonoBehaviour {
 
@@ -20,7 +21,7 @@ public class ThirdPersonShipCamera : MonoBehaviour {
         }
         else
         {
-            var findShip = GameObject.Find("StarShip(Clone)");
+            var findShip = Util.GetShip();
             if (findShip != null)
             {
                 _ship = findShip;

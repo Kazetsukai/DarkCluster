@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Assets.Scripts.Services
+namespace DarkCluster.Core.Services
 {
     public class ServiceBootstrapper
     {
@@ -14,7 +14,7 @@ namespace Assets.Scripts.Services
         public static IEnumerable<IService> GetServices()
         {
             if (_services == null)
-                return _services = _GetServices();
+                return _services = _GetServices().ToList();
             else
                 return _services;
         }

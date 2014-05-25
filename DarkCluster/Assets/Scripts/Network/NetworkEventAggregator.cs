@@ -4,7 +4,7 @@ using Caliburn.Micro;
 using System;
 using System.Xml.Serialization;
 using System.IO;
-using Assets.Scripts.Services;
+using DarkCluster.Core.Services;
 
 public class NetworkEventAggregator : Photon.MonoBehaviour
 {
@@ -30,7 +30,16 @@ public class NetworkEventAggregator : Photon.MonoBehaviour
     public void Publish<T>(T message)
     {
         var serializedValue = Serialize(message);
-        photonView.RPC("PublishRemote", PhotonTargets.AllViaServer, serializedValue, typeof(T).FullName);
+        if (!PhotonNetwork.offlineMode)
+        {
+            Debug.Log("Publishing " + message);
+            photonView.RPC("PublishRemote", PhotonTargets.AllViaServer, serializedValue, typeof(T).FullName);
+        }
+        else
+        {
+            Debug.Log("Publishing " + message + " offline");
+            _eventAggregator.Publish(message);
+        }
     }
 
     private static string Serialize<T>(T message)

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Assets.Scripts.Events;
+using DarkCluster.Core;
 
 public class TakeControlOfShip : MonoBehaviour {
 
@@ -14,7 +15,8 @@ public class TakeControlOfShip : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.BackQuote))
         {
             Debug.Log("Taking command...");
-            ((NetworkEventAggregator)UnityEngine.Object.FindObjectOfType(typeof(NetworkEventAggregator))).Publish(new ShipControllingPlayerChangedEvent() { PlayerID = PhotonNetwork.player.ID });
+            Util.GetEventAggregator().Publish(new ShipControllingPlayerChangedEvent() { PlayerID = PhotonNetwork.player.ID });
         }
 	}
+
 }

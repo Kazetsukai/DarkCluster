@@ -23,8 +23,7 @@ public class PlayerShipController : Photon.MonoBehaviour {
     {
         if (_ship != null)
         {
-            // TODO: Find a nicer way to determine owner of an object
-            if (IsOwner)
+            if (photonView.isMine)
             {
                 var roll = -Input.GetAxis("Horizontal");
                 var pitch = Input.GetAxis("Vertical");
@@ -39,13 +38,6 @@ public class PlayerShipController : Photon.MonoBehaviour {
                     _ship.rigidbody.AddRelativeForce(Vector3.forward * 50);
 
                 Debug.DrawRay(_ship.transform.position, _ship.rigidbody.velocity, Color.white);
-
-                if (Input.GetButtonDown("Fire2"))
-                {
-                    var enemy = GameObject.Find("EnemyShip(Clone)");
-                    if (enemy != null)
-                        FireMahLaser(_ship, enemy);
-                }
             }
 
         }
@@ -59,25 +51,14 @@ public class PlayerShipController : Photon.MonoBehaviour {
         }
     }
 
-    private void FireMahLaser(GameObject from, GameObject to)
-    {
-        var laser = (GameObject)Instantiate(Resources.Load<GameObject>("LaserBeam"));
-
-        var laserScript = laser.GetComponent<LaserScript>();
-        laserScript.Origin = from;
-        laserScript.Target = to;
-    }
-
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
-            IsOwner = true;
             WriteTrackedObjectsTo(stream);
         }
         else
         {
-            IsOwner = false;
             UpdateTrackedObjectsFrom(stream, info);
         }
     }

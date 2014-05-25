@@ -37,6 +37,7 @@ public class REPL : MonoBehaviour {
         Evaluator.Run("using System.Text;");
         Evaluator.Run("using System.Collections;");
         Evaluator.Run("using System.Linq;");
+        Evaluator.Run("using DarkCluster.Core;");
 	}
 	
 	// Update is called once per frame
