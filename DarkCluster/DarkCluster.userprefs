@@ -1,20 +1,22 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Users\KURO\Documents\GitHub\DarkCluster\DarkCluster\Assets\3rdParty\Photon Unity Networking\Editor\PhotonNetwork\AccountService.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Plugins\Android\res\layout\main.xml">
     <Files>
+      <File FileName="Assets\Scripts\Network\JoinNetworkGame.cs" Line="1" Column="1" />
       <File FileName="Assets\3rdParty\Pixelplacement\iTweenPath\Editor\iTweenPathEditor.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Network\JoinNetworkGame.cs" Line="32" Column="54" />
-      <File FileName="c:\Users\KURO\Documents\GitHub\DarkCluster\DarkCluster\Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs" Line="12" Column="31" />
-      <File FileName="c:\Users\KURO\Documents\GitHub\DarkCluster\DarkCluster\Assets\Scripts\Network\NetworkEventAggregator.cs" Line="36" Column="6" />
-      <File FileName="c:\Users\KURO\Documents\GitHub\DarkCluster\DarkCluster\Assets\Scripts\PlayerShipController.cs" Line="26" Column="15" />
-      <File FileName="c:\Users\KURO\Documents\GitHub\DarkCluster\DarkCluster\Assets\Scripts\Network\ObjectLocationTracker.cs" Line="62" Column="2" />
-      <File FileName="c:\Users\KURO\Documents\GitHub\DarkCluster\DarkCluster\Assets\Scripts\Services\ShipControlService.cs" Line="34" Column="113" />
-      <File FileName="c:\Users\KURO\Documents\GitHub\DarkCluster\DarkCluster\Assets\Scripts\TakeControlOfShip.cs" Line="23" Column="1" />
-      <File FileName="c:\Users\KURO\Documents\GitHub\DarkCluster\DarkCluster\Assets\3rdParty\Photon Unity Networking\Editor\PhotonNetwork\AccountService.cs" Line="93" Column="99" />
+      <File FileName="Assets\Scripts\Network\JoinNetworkGame.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\KURO\Documents\GitHub\DarkCluster\DarkCluster\Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs" Line="12" Column="36" />
+      <File FileName="c:\Users\KURO\Documents\GitHub\DarkCluster\DarkCluster\Assets\Scripts\Network\NetworkEventAggregator.cs" Line="34" Column="1" />
+      <File FileName="Assets\Scripts\Network\ObjectLocationTracker.cs" Line="19" Column="95" />
+      <File FileName="Assets\Scripts\PlayerShipController.cs" Line="32" Column="27" />
+      <File FileName="Assets\Scripts\TakeControlOfShip.cs" Line="17" Column="44" />
+      <File FileName="Assets\Plugins\Android\res\layout\main.xml" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\KURO\Documents\GitHub\DarkCluster\DarkCluster\Assets\Scripts\Network\JoinNetworkGame.cs" line="12" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
