@@ -29,11 +29,14 @@ public class FireLaser : MonoBehaviour {
                 if (Physics.Raycast(ray, out rayHit))
                 {
                     Debug.Log("Found something...");
-                    var tracked = rayHit.rigidbody.GetComponent<TrackedObject>();
-                    if (tracked != null)
+                    if (rayHit.rigidbody != null)
                     {
-                        Debug.Log("Tracked object! Publishing laser fire!");
-                        Util.GetEventAggregator().Publish(new LaserFiredEvent() { TargetID = tracked.ID });
+                        var tracked = rayHit.rigidbody.GetComponent<TrackedObject>();
+                        if (tracked != null)
+                        {
+                            Debug.Log("Tracked object! Publishing laser fire!");
+                            Util.GetEventAggregator().Publish(new LaserFiredEvent() { TargetID = tracked.Id });
+                        }
                     }
                 }
             }

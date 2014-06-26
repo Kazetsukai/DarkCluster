@@ -5,13 +5,16 @@ using System;
 using System.Xml.Serialization;
 using System.IO;
 using DarkCluster.Core.Services;
+using Assets.Scripts.Events;
+using Assets.Scripts.Network;
 
 public class NetworkEventAggregator : Photon.MonoBehaviour
 {
-
     IEventAggregator _eventAggregator;
 
-	// Use this for initialization
+    // First 9999 ids are reserved.
+    int _nextEventId = 10000;
+
 	void Start () {
         _eventAggregator = new EventAggregator();
 
@@ -22,7 +25,6 @@ public class NetworkEventAggregator : Photon.MonoBehaviour
         }
 	}
 	
-	// Update is called once per frame
 	void Update () {
 	
 	}
@@ -66,6 +68,9 @@ public class NetworkEventAggregator : Photon.MonoBehaviour
     private void PublishRemote(string message, string type)
     {
         var obj = Deserialize(message, type);
+
+        if (obj is IEvent)
+            ((IEvent)obj).EventId = _nextEventId++;
 
         _eventAggregator.Publish(obj);
     }

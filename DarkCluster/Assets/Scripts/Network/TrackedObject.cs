@@ -3,7 +3,8 @@ using System.Collections;
 
 public class TrackedObject : MonoBehaviour {
 
-    public int ID { get; set; }
+    public int Id { get; set; }
+    public bool Paused { get; set; }
 
     //public TrackedObjectFrame[] oldFrames;
     public double LatestTimestamp;

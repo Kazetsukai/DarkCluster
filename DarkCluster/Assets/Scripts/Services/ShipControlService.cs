@@ -27,7 +27,7 @@ namespace DarkCluster.Core.Services
             {
                 if (message.PlayerID != -1)
                 {
-                    objectTracker.StopTrackingObject(findShip);
+                    objectTracker.PauseTrackingObject(findShip);
                     Debug.Log("I am player " + PhotonNetwork.player.ID + " and player " + message.PlayerID + " is taking command.");
                     if (message.PlayerID == PhotonNetwork.player.ID)
                     {
@@ -36,7 +36,7 @@ namespace DarkCluster.Core.Services
                 }
                 else
                 {
-                    objectTracker.TrackObject(findShip);
+                    objectTracker.UnpauseTrackingObject(findShip);
                 }
             }
         }

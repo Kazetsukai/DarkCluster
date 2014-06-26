@@ -18,16 +18,6 @@ namespace DarkCluster.Core
             return (ObjectLocationTracker)UnityEngine.Object.FindObjectOfType(typeof(ObjectLocationTracker));
         }
 
-        public static GameObject Spawn(string name)
-        {
-            return (GameObject)GameObject.Instantiate(Resources.Load<GameObject>(name));
-        }
-
-        public static void Track(GameObject obj)
-        {
-            UnityEngine.Object.FindObjectOfType<ObjectLocationTracker>().TrackObject(obj);
-        }
-
         public static GameObject GetShip()
         {
             return GameObject.Find("StarShip(Clone)");

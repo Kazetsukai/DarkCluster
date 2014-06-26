@@ -2,36 +2,30 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using DarkCluster.Core;
+using Assets.Scripts.Events;
+using Assets.Scripts.Network;
 
-// TODO: This class desperately needs to be able to assert that
-//       it will never get tracking IDs out of sync across
-//       different clients...
 public class ObjectLocationTracker : MonoBehaviour {
 
     Dictionary<int, TrackedObject> _trackedObjects = new Dictionary<int,TrackedObject>();
-    int _nextTrackingId = 0;
     public bool ReestimatePosition;
 
 	void Start() 
     {
-        TrackObject((GameObject)Instantiate(Resources.Load<GameObject>("StarShip")));
-        Debug.Log("Created ship");
 	}
 	
 	void Update()
     {
 	}
 
-    public int TrackObject(GameObject obj)
+    public void TrackObject(GameObject obj, int id)
     {
         var trackedObj = obj.AddComponent<TrackedObject>();
 
-        trackedObj.ID = _nextTrackingId;
-        _trackedObjects.Add(trackedObj.ID, trackedObj);
-
-        _nextTrackingId++;
-
-        return trackedObj.ID;
+        trackedObj.Id = id;
+        _trackedObjects.Add(trackedObj.Id, trackedObj);
     }
 
     public void StopTrackingObject(GameObject obj)
@@ -39,7 +33,7 @@ public class ObjectLocationTracker : MonoBehaviour {
         var trackedObj = obj.GetComponent<TrackedObject>();
         if (trackedObj != null)
         {
-            _trackedObjects.Remove(trackedObj.ID);
+            _trackedObjects.Remove(trackedObj.Id);
         }
     }
 
@@ -77,7 +71,6 @@ public class ObjectLocationTracker : MonoBehaviour {
 
             bool update = info.timestamp > obj.LatestTimestamp;
             if (update) obj.LatestTimestamp = info.timestamp;
-            else Debug.Log("Ignored frame!");
 
             if ((bool)stream.ReceiveNext())
             {
@@ -116,8 +109,8 @@ public class ObjectLocationTracker : MonoBehaviour {
 
     private void WriteTrackedObjectsTo(PhotonStream stream)
     {
-        var objects = _trackedObjects.Values;
-        int count = objects.Count;
+        var objects = _trackedObjects.Values.Where(t => !t.Paused);
+        int count = objects.Count();
 
         stream.SendNext(count);
 
@@ -130,7 +123,7 @@ public class ObjectLocationTracker : MonoBehaviour {
             var objTransform = obj.transform;
             var objRigidbody = obj.rigidbody;
 
-            stream.SendNext(obj.ID);
+            stream.SendNext(obj.Id);
 
             if (objTransform != null)
             {
@@ -164,6 +157,24 @@ public class ObjectLocationTracker : MonoBehaviour {
             stream.SendNext(false);
             stream.SendNext(false);
             i++;
+        }
+    }
+    
+    public void PauseTrackingObject(GameObject obj)
+    {
+        var trackedObj = obj.GetComponent<TrackedObject>();
+        if (trackedObj != null)
+        {
+            trackedObj.Paused = true;
+        }
+    }
+
+    public void UnpauseTrackingObject(GameObject obj)
+    {
+        var trackedObj = obj.GetComponent<TrackedObject>();
+        if (trackedObj != null)
+        {
+            trackedObj.Paused = false;
         }
     }
 }

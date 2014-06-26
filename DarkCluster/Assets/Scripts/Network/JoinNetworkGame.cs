@@ -6,7 +6,7 @@ public class JoinNetworkGame : MonoBehaviour {
     private string _roomName = "Room";
 
 	void Start () {
-        //PhotonNetwork.ConnectUsingSettings("v0.1");
+        PhotonNetwork.ConnectUsingSettings("v0.1");
         
 
         Debug.LogWarning("Starting game in local mode");
