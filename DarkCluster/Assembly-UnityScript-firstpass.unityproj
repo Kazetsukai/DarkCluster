@@ -49,15 +49,13 @@
      <Compile Include="Assets\Standard Assets\Particles\Legacy Particles\TimedObjectDestructor.js" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Plugins\release_history.txt" />
+     <None Include="Assets\3rdParty\Ouya\LitJson\license.txt" />
+     <None Include="Assets\Plugins\Android\res\values\strings.xml" />
      <None Include="Assets\3rdParty\iTween\ReadMe!\ReadMe!.txt" />
-     <None Include="Assets\3rdParty\Photon Unity Networking\readme.txt" />
-     <None Include="Assets\Plugins\Photon3Unity3D.xml" />
-     <None Include="Assets\3rdParty\Photon Unity Networking\changelog.txt" />
+     <None Include="Assets\Plugins\Android\res\layout\main.xml" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="Mono.CSharp">
  <HintPath>Assets\Mono.CSharp.dll</HintPath>
- </Reference>
- <Reference Include="Photon3Unity3D">
- <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

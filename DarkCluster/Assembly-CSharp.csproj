@@ -48,40 +48,15 @@
   <ItemGroup>
      <Compile Include="Assets\3rdParty\Caliburn.Micro\EventAggregator.cs" />
      <Compile Include="Assets\3rdParty\Caliburn.Micro\ExtensionMethods.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\CustomTypes.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\Enums.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\Extensions.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\FriendInfo.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\LoadbalancingPeer.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\PhotonClasses.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\PhotonLagSimulationGui.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\PhotonPlayer.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\PhotonStatsGui.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\PingCloudRegions.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\RPC.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\Room.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\RoomInfo.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\RpcIndexComponent.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\ServerSettings.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\Plugins\PhotonNetwork\SocketUdp.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\ConnectAndJoinRandom.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\InRoomChat.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\InputToEvent.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\ManualPhotonViewAllocator.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\MoveByKeys.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\OnAwakeUsePhotonView.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\OnClickDestroy.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\OnClickInstantiate.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\OnClickLoadSomething.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\PointedAtGameObjectInfo.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\ServerTime.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\SmoothSyncMovement.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\TestDontDestroyOnLoad.cs" />
-     <Compile Include="Assets\3rdParty\Photon Unity Networking\UtilityScripts\TimeKeeper.cs" />
+     <Compile Include="Assets\3rdParty\Ouya\LitJson\IJsonWrapper.cs" />
+     <Compile Include="Assets\3rdParty\Ouya\LitJson\JsonData.cs" />
+     <Compile Include="Assets\3rdParty\Ouya\LitJson\JsonException.cs" />
+     <Compile Include="Assets\3rdParty\Ouya\LitJson\JsonMapper.cs" />
+     <Compile Include="Assets\3rdParty\Ouya\LitJson\JsonReader.cs" />
+     <Compile Include="Assets\3rdParty\Ouya\LitJson\JsonWriter.cs" />
+     <Compile Include="Assets\3rdParty\Ouya\LitJson\Lexer.cs" />
+     <Compile Include="Assets\3rdParty\Ouya\LitJson\ParserToken.cs" />
+     <Compile Include="Assets\3rdParty\Ouya\SDK\Scripts\OuyaGameObject.cs" />
      <Compile Include="Assets\3rdParty\Pixelplacement\iTweenPath\iTweenPath.cs" />
      <Compile Include="Assets\3rdParty\iTween\Plugins\iTween.cs" />
      <Compile Include="Assets\3rdParty\iTween\Sample\MoveSample.cs" />
@@ -114,18 +89,18 @@
      <Compile Include="Assets\Scripts\Util.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Plugins\release_history.txt" />
+     <None Include="Assets\3rdParty\Ouya\LitJson\license.txt" />
+     <None Include="Assets\Plugins\Android\res\values\strings.xml" />
      <None Include="Assets\3rdParty\iTween\ReadMe!\ReadMe!.txt" />
-     <None Include="Assets\3rdParty\Photon Unity Networking\readme.txt" />
-     <None Include="Assets\Plugins\Photon3Unity3D.xml" />
-     <None Include="Assets\3rdParty\Photon Unity Networking\changelog.txt" />
+     <None Include="Assets\Plugins\Android\res\layout\main.xml" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="Mono.CSharp">
  <HintPath>Assets\Mono.CSharp.dll</HintPath>
  </Reference>
- <Reference Include="Photon3Unity3D">
- <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
- </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{AB37D057-1FEA-0A75-E740-F34C099D082D}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
       <Project>{3ED8915F-69EA-3ED3-4598-0F29451C9DB8}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>

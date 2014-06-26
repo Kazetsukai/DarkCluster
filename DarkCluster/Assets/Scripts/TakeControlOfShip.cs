@@ -15,7 +15,7 @@ public class TakeControlOfShip : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.BackQuote))
         {
             Debug.Log("Taking command...");
-            Util.GetEventAggregator().Publish(new ShipControllingPlayerChangedEvent() { PlayerID = PhotonNetwork.player.ID });
+            Util.GetEventAggregator().Publish(new ShipControllingPlayerChangedEvent() { PlayerID = 0 });
         }
 	}
 

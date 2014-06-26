@@ -14,10 +14,10 @@ namespace DarkCluster.Core.Services
         {
             Debug.Log("Roger that!");
 
-            IEnumerable<PlayerShipController> otherControllers = GameObject.FindObjectsOfType<PlayerShipController>().Where(c => c.photonView.isMine);
+            IEnumerable<PlayerShipController> otherControllers = GameObject.FindObjectsOfType<PlayerShipController>();
             foreach (var controller in otherControllers)
             {
-                PhotonNetwork.Destroy(controller.gameObject);
+                GameObject.Destroy(controller.gameObject);
             }
 
             var findShip = GameObject.Find("StarShip(Clone)");
@@ -28,10 +28,10 @@ namespace DarkCluster.Core.Services
                 if (message.PlayerID != -1)
                 {
                     objectTracker.PauseTrackingObject(findShip);
-                    Debug.Log("I am player " + PhotonNetwork.player.ID + " and player " + message.PlayerID + " is taking command.");
-                    if (message.PlayerID == PhotonNetwork.player.ID)
+                    //Debug.Log("I am player " + PhotonNetwork.player.ID + " and player " + message.PlayerID + " is taking command.");
+                    if (message.PlayerID == 0)//PhotonNetwork.player.ID)
                     {
-                        var ship = PhotonNetwork.Instantiate("PlayerShipController", Vector3.zero, Quaternion.identity, 0);
+                        var ship = GameObject.Instantiate(Resources.Load<MonoBehaviour>("PlayerShipController"));
                     }
                 }
                 else

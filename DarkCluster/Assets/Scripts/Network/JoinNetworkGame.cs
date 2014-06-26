@@ -6,12 +6,12 @@ public class JoinNetworkGame : MonoBehaviour {
     private string _roomName = "Room";
 
 	void Start () {
-        PhotonNetwork.ConnectUsingSettings("v0.1");
+        //PhotonNetwork.ConnectUsingSettings("v0.1");
         
 
         Debug.LogWarning("Starting game in local mode");
-        PhotonNetwork.offlineMode = true;
-        OnJoinedLobby();
+        //PhotonNetwork.offlineMode = true;
+        OnJoinedRoom();
 	}
 	
 	void Update () {
@@ -20,16 +20,16 @@ public class JoinNetworkGame : MonoBehaviour {
     void OnJoinedLobby()
     {
         Debug.Log("Joined lobby!");
-        PhotonNetwork.JoinOrCreateRoom(_roomName, null, PhotonNetwork.lobby);
+        //PhotonNetwork.JoinOrCreateRoom(_roomName, null, PhotonNetwork.lobby);
     }
 
     void OnJoinedRoom()
     {
         Debug.Log("Joined room!");
 
-        if (PhotonNetwork.isMasterClient)
+        //if (PhotonNetwork.isMasterClient)
         {
-            PhotonNetwork.Instantiate("NetworkLogic", Vector3.zero, Quaternion.identity, 0);
+            Instantiate(Resources.Load<MonoBehaviour>("NetworkLogic"));
         }
     }
 }

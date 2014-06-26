@@ -8,7 +8,7 @@ using DarkCluster.Core.Services;
 using Assets.Scripts.Events;
 using Assets.Scripts.Network;
 
-public class NetworkEventAggregator : Photon.MonoBehaviour
+public class NetworkEventAggregator : MonoBehaviour
 {
     IEventAggregator _eventAggregator;
 
@@ -32,16 +32,8 @@ public class NetworkEventAggregator : Photon.MonoBehaviour
     public void Publish<T>(T message)
     {
         var serializedValue = Serialize(message);
-        if (!PhotonNetwork.offlineMode)
-        {
-            Debug.Log("Publishing " + message);
-            photonView.RPC("PublishRemote", PhotonTargets.AllViaServer, serializedValue, typeof(T).FullName);
-        }
-        else
-        {
-            Debug.Log("Publishing " + message + " offline");
-            _eventAggregator.Publish(message);
-        }
+    	Debug.Log("Publishing " + message + " offline");
+    	_eventAggregator.Publish(message);
     }
 
     private static string Serialize<T>(T message)
